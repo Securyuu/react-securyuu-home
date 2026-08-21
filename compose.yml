@@ -1,0 +1,11 @@
+services:
+  build:
+    profiles:
+      - build
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ./dist
+        target: /output
