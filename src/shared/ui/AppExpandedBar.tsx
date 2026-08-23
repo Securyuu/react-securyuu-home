@@ -39,10 +39,15 @@ const AppExpandedBar = ({isMenuOpen, setIsMenuOpen}: AppExpandedBarProps) => {
 
 const styles = StyleSheet.create({
 	outer: {
+		position: "absolute",
+		top: 0,
+		left: 0,
 		flex: 1,
 		width: "100%",
+		height: "100%",
 		alignItems: "center",
 		paddingTop: 12,
+		backgroundColor: "white",
 	},
 	panel: {
 		flex: 1,

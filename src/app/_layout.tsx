@@ -1,5 +1,5 @@
 import { DarkTheme, DefaultTheme, Slot, ThemeProvider } from 'expo-router';
-import { StyleSheet, useColorScheme, View } from 'react-native';
+import { ScrollView, StyleSheet, useColorScheme, View } from 'react-native';
 import AppBar from '@/shared/ui/AppBar';
 import { useEffect, useState } from 'react';
 import { useFonts } from "expo-font";
@@ -33,13 +33,15 @@ import AppExpandedBar from '@/shared/ui/AppExpandedBar';
 					/>
 				}
 
+				<ScrollView style={styles.content}>
+					<Slot />
+				</ScrollView>
+
 				{ isMenuOpen && 
 					<AppExpandedBar 
 						isMenuOpen={isMenuOpen}
 						setIsMenuOpen={setIsMenuOpen} /> 
 				}
-
-				<Slot />
 			</View>
     </ThemeProvider>
   );
@@ -49,6 +51,9 @@ const styles = StyleSheet.create({
 	screen: {
 		flex: 1,
 		padding: 16,
+	},
+	content: {
+		flex: 1,
 	},
 });
 
