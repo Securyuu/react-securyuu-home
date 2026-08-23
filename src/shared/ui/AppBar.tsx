@@ -1,7 +1,8 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, useWindowDimensions, View } from "react-native";
 import BrandText from "../branding/BrandText";
 import AppBarClose from "./AppBarCloseButton";
 import BrandLogo from "../branding/BrandLogo";
+import { isWideScreen } from "./Breakpoints";
 
 type AppBarProps = {
 	isMenuOpen: boolean,
@@ -9,15 +10,19 @@ type AppBarProps = {
 };
 
 const AppBar = ({isMenuOpen, setIsMenuOpen}: AppBarProps) => {
+	const { width } = useWindowDimensions();
+
 	return (
 		<View style={styles.outer}>
 			<View style={styles.bar}>
-				<View style={styles.left}
-				>
-					<BrandText text="Home" />
-					<BrandText text="Patterns" />
-					<BrandText text="Examples" />
-				</View>
+				{isWideScreen(width) &&
+					<View style={styles.left}
+					>
+						<BrandText text="Home" />
+						<BrandText text="Patterns" />
+						<BrandText text="Examples" />
+					</View>
+				}
 				<View style={styles.center}>
 					<BrandLogo />
 				</View>
